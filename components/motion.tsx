@@ -30,25 +30,18 @@ export function Reveal({
 
 export function ImageReveal({
   children,
-  delay = 0,
   className,
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
+  // Rendered without scroll animation for maximum reliability —
+  // images must never be hidden if a scroll trigger fails.
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: reduce ? 0 : 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
-      style={{ overflow: "hidden" }}
-    >
+    <div className={className} style={{ overflow: "hidden" }}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
