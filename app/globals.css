@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #f4eee3;
+  --color-ivory-deep: #e9e1d2;
+  --color-charcoal: #191613;
+  --color-charcoal-soft: #242019;
+  --color-burgundy: #6e2a3a;
+  --color-burgundy-deep: #4e1d29;
+  --color-taupe: #a3917a;
+  --color-taupe-light: #c4b49c;
+
+  --font-serif: "Cormorant Garamond", "Georgia", serif;
+  --font-sans: "Inter", "Helvetica Neue", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-burgundy);
+  color: var(--color-ivory);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-taupe);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-burgundy);
+}
+
+/* Line-mask text reveal */
+.line-mask {
+  display: block;
+  overflow: hidden;
+}
+.line-mask > span {
+  display: block;
+  transform: translateY(110%);
+}
+
+/* Image reveal mask */
+.img-reveal {
+  clip-path: inset(0 0 100% 0);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-burgundy);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .line-mask > span {
+    transform: none;
+  }
+  .img-reveal {
+    clip-path: inset(0 0 0% 0);
+  }
+}
